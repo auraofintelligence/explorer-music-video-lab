@@ -49,7 +49,7 @@ This repo does not claim official endorsement from any artist, festival, communi
 
 ## Assets
 
-- `assets/img/hero-workbench.png` is a generated concept image for the site.
+- `assets/img/hero-*.webp` are generated hero images for the site pages.
 - `docs/design-concept.png` is the generated UI concept used as a visual reference.
 - `assets/favicon.svg` is a custom treble-clef favicon.
 

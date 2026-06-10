@@ -463,13 +463,15 @@ p {
 }
 
 .bridge-band {
-  width: 100%;
-  max-width: none;
+  width: min(calc(100% - clamp(2rem, 8vw, 4rem)), var(--max));
+  max-width: var(--max);
+  margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: center;
-  padding-inline: max(clamp(1rem, 4vw, 2rem), calc((100vw - var(--max)) / 2 + 2rem));
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--radius);
   color: white;
   background:
     linear-gradient(135deg, rgba(16, 33, 41, .94), rgba(15, 111, 115, .92)),
@@ -482,13 +484,38 @@ p {
 }
 
 .page-hero {
-  padding: clamp(4.8rem, 9vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  max-width: 50rem;
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(18rem, .75fr);
+  gap: clamp(1rem, 4vw, 2rem);
+  align-items: center;
+  max-width: none;
+  padding: clamp(2.25rem, 5vw, 4.6rem) 0 clamp(2rem, 5vw, 4rem);
+}
+
+.page-hero-copy {
+  max-width: 48rem;
+}
+
+.page-hero-media {
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.page-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .small-hero h1 {
-  max-width: 12ch;
-  font-size: clamp(3rem, 8vw, 5.8rem);
+  max-width: 14ch;
+  font-size: clamp(2.45rem, 5.5vw, 4.6rem);
 }
 
 .small-hero p {
@@ -540,6 +567,15 @@ p {
   padding: 1.1rem;
 }
 
+.question-board h2,
+.boundary-grid h2,
+.link-grid h2,
+.builder-card h2 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
 .link-grid span {
   display: block;
   margin-bottom: .65rem;
@@ -548,11 +584,30 @@ p {
 }
 
 .source-list {
+  display: grid;
+  gap: .85rem;
   padding: 1.3rem;
 }
 
+.source-list h2 {
+  margin-top: .75rem;
+  font-size: clamp(1.45rem, 2.7vw, 2.25rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.source-list h2:first-child {
+  margin-top: 0;
+}
+
+.source-list p {
+  max-width: 72rem;
+  margin-top: 0;
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+}
+
 .source-list h2 + p {
-  margin-bottom: 1.4rem;
+  margin-bottom: .35rem;
 }
 
 .builder-directory {
@@ -675,12 +730,58 @@ textarea {
 }
 
 .site-footer {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
+  display: block;
   padding: 2rem clamp(1rem, 4vw, 2.5rem);
   border-top: 1px solid var(--line);
   background: #f2f7f4;
+}
+
+.footer-page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100%, var(--max));
+  margin: 0 auto 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-page-nav a {
+  display: grid;
+  min-width: 12rem;
+  max-width: 48%;
+  padding: .85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  color: var(--teal-dark);
+  text-decoration: none;
+  box-shadow: var(--soft-shadow);
+}
+
+.footer-page-nav a:last-child {
+  text-align: right;
+  justify-items: end;
+}
+
+.footer-page-nav span {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.footer-page-nav strong {
+  overflow-wrap: anywhere;
+  font-size: 1.05rem;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  width: min(100%, var(--max));
+  margin-inline: auto;
 }
 
 .footer-links {
@@ -780,9 +881,20 @@ textarea {
   .builder-directory,
   .builder-layout,
   .split-section,
+  .page-hero,
   .bridge-band,
-  .site-footer {
+  .footer-main {
     grid-template-columns: 1fr;
+  }
+
+  .page-hero-media {
+    order: -1;
+    aspect-ratio: 16 / 8.5;
+  }
+
+  .footer-page-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .preview-card {
@@ -814,23 +926,34 @@ textarea {
 
   .hero-copy h1,
   .small-hero h1 {
-    font-size: clamp(2.6rem, 16vw, 4.4rem);
-    max-width: 8.6ch;
+    font-size: clamp(2.35rem, 13vw, 3.9rem);
+    max-width: 11ch;
   }
 
   .hero-actions,
   .button-row,
   .builder-actions,
   .page-nav,
-  .footer-links {
+  .footer-links,
+  .footer-page-nav {
     flex-direction: column;
     align-items: stretch;
   }
 
   .button,
-  .page-nav a {
+  .page-nav a,
+  .footer-page-nav a {
     width: 100%;
     max-width: none;
+  }
+
+  .footer-page-nav {
+    display: flex;
+  }
+
+  .footer-page-nav a:last-child {
+    text-align: left;
+    justify-items: start;
   }
 
   .workflow-cards {

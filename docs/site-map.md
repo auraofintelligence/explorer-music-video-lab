@@ -34,7 +34,7 @@
 - `assets/js/site.js`
 - `assets/js/builder-data.js`
 - `assets/js/builder-page.js`
-- `assets/img/hero-workbench.png`
+- `assets/img/hero-*.webp`
 - `assets/favicon.svg`
 
 ## Documentation

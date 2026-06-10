@@ -8,6 +8,37 @@ const sitePages = [
   { id: 'sources', label: 'Sources', href: 'sources.html' },
 ];
 
+const siteTrail = [
+  { id: 'home', label: 'Home', href: 'index.html' },
+  { id: 'workflow', label: 'Workflow', href: 'workflow.html' },
+  { id: 'questions', label: 'Questions', href: 'questions.html' },
+  { id: 'builders', label: 'Builder directory', href: 'builders/index.html' },
+  { id: 'builder-song-seed', label: 'Song Seed', href: 'builders/song-seed.html' },
+  { id: 'builder-visual-brief', label: 'Visual Brief', href: 'builders/visual-brief.html' },
+  { id: 'builder-storyboard', label: 'Storyboard', href: 'builders/storyboard.html' },
+  { id: 'builder-keyframe-shot', label: 'Keyframe Shot', href: 'builders/keyframe-shot.html' },
+  { id: 'builder-clip-review', label: 'Clip Review', href: 'builders/clip-review.html' },
+  { id: 'builder-release-plan', label: 'Release Plan', href: 'builders/release-plan.html' },
+  { id: 'ecosystem', label: 'Ecosystem', href: 'ecosystem.html' },
+  { id: 'boundaries', label: 'Boundaries', href: 'boundaries.html' },
+  { id: 'sources', label: 'Sources', href: 'sources.html' },
+];
+
+const pageHeroImages = {
+  workflow: 'assets/img/hero-workflow.webp',
+  questions: 'assets/img/hero-questions.webp',
+  builders: 'assets/img/hero-builders.webp',
+  'builder-song-seed': 'assets/img/hero-builder-song-seed.webp',
+  'builder-visual-brief': 'assets/img/hero-builder-visual-brief.webp',
+  'builder-storyboard': 'assets/img/hero-builder-storyboard.webp',
+  'builder-keyframe-shot': 'assets/img/hero-builder-keyframe-shot.webp',
+  'builder-clip-review': 'assets/img/hero-builder-clip-review.webp',
+  'builder-release-plan': 'assets/img/hero-builder-release-plan.webp',
+  ecosystem: 'assets/img/hero-ecosystem.webp',
+  boundaries: 'assets/img/hero-boundaries.webp',
+  sources: 'assets/img/hero-sources.webp',
+};
+
 const pageId = document.body.dataset.page || 'home';
 const inBuilderFolder = location.pathname.includes('/builders/');
 const prefix = inBuilderFolder ? '../' : '';
@@ -25,6 +56,11 @@ function resolveHref(href) {
   if (inBuilderFolder && !href.startsWith('builders/')) return `${prefix}${href}`;
   if (inBuilderFolder && href.startsWith('builders/')) return `${prefix}${href}`;
   return href;
+}
+
+function resolveAssetPath(src) {
+  if (src.startsWith('http') || src.startsWith('../')) return src;
+  return `${prefix}${src}`;
 }
 
 function renderHeader() {
@@ -53,33 +89,63 @@ function renderHeader() {
   });
 }
 
+function renderPageHero() {
+  const hero = document.querySelector('.page-hero');
+  const imageSrc = pageHeroImages[pageId];
+  if (!hero || !imageSrc || hero.querySelector('.page-hero-media')) return;
+
+  const copy = document.createElement('div');
+  copy.className = 'page-hero-copy';
+  while (hero.firstChild) copy.appendChild(hero.firstChild);
+
+  const media = document.createElement('figure');
+  media.className = 'page-hero-media';
+  media.setAttribute('aria-hidden', 'true');
+
+  const image = document.createElement('img');
+  image.src = resolveAssetPath(imageSrc);
+  image.alt = '';
+  image.loading = 'eager';
+  image.decoding = 'async';
+  media.appendChild(image);
+
+  hero.append(copy, media);
+}
+
 function renderFooter() {
   const footer = document.querySelector('[data-site-footer]');
   if (!footer) return;
-  footer.innerHTML = `
-    <div>
-      <strong>Explorer Music Video Lab</strong>
-      <p>Song-first music-video builders for optimistic, self-sovereign creators.</p>
-    </div>
-    <nav class="footer-links" aria-label="Footer links">
-      <a href="${prefix}workflow.html">Workflow</a>
-      <a href="${prefix}builders/index.html">Builders</a>
-      <a href="${prefix}boundaries.html">Boundaries</a>
-      <a href="${prefix}sources.html">Sources</a>
+  const currentIndex = siteTrail.findIndex((page) => page.id === pageId);
+  const previous = siteTrail[currentIndex - 1];
+  const next = siteTrail[currentIndex + 1];
+  const prevNext = currentIndex >= 0 ? `
+    <nav class="footer-page-nav" aria-label="Previous and next pages">
+      ${previous ? `<a href="${resolveHref(previous.href)}"><span>Previous</span><strong>${previous.label}</strong></a>` : '<span></span>'}
+      ${next ? `<a href="${resolveHref(next.href)}"><span>Next</span><strong>${next.label}</strong></a>` : '<span></span>'}
     </nav>
+  ` : '';
+
+  footer.innerHTML = `
+    ${prevNext}
+    <div class="footer-main">
+      <div>
+        <strong>Explorer Music Video Lab</strong>
+        <p>Song-first music-video builders for optimistic, self-sovereign creators.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="${prefix}workflow.html">Workflow</a>
+        <a href="${prefix}builders/index.html">Builders</a>
+        <a href="${prefix}boundaries.html">Boundaries</a>
+        <a href="${prefix}sources.html">Sources</a>
+      </nav>
+    </div>
   `;
 }
 
 function renderPageNav() {
   const nav = document.querySelector('[data-page-nav]');
   if (!nav) return;
-  const currentIndex = sitePages.findIndex((page) => page.id === pageId);
-  const previous = sitePages[currentIndex - 1];
-  const next = sitePages[currentIndex + 1];
-  nav.innerHTML = `
-    ${previous ? `<a href="${resolveHref(previous.href)}">Previous: ${previous.label}</a>` : '<span></span>'}
-    ${next ? `<a href="${resolveHref(next.href)}">Next: ${next.label}</a>` : '<span></span>'}
-  `;
+  nav.remove();
 }
 
 function setupToTop() {
@@ -92,6 +158,7 @@ function setupToTop() {
 }
 
 renderHeader();
+renderPageHero();
 renderFooter();
 renderPageNav();
 setupToTop();

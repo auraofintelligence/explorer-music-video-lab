@@ -25,7 +25,6 @@ They were not treated as public authority, legal advice, cultural approval, offi
 - `strange-but-true`
 - `strange-but-true-travel-oracle`
 - `strange-but-true-cosmic-nexus`
-- `strange-but-true-ai-trust-index`
 - `p4a_xyz`
 
 ## Patterns Reused
@@ -62,10 +61,6 @@ Used for the self-sovereign framing: the model can suggest, but the explorer kee
 
 Used for the wider explorer lens: mystery, films, source trails, public/private boundaries and connected story-worlds.
 
-### Strange But True AI Trust Index
-
-Used as a reminder that AI tool details change quickly and should be refreshed before being treated as current.
-
 ### P4A Musicverse
 
 Used for the culture-as-public-imagination pattern: music, jokes, grief, repair and civic ideas can become singable before they become formal systems.
@@ -75,7 +70,7 @@ Used for the culture-as-public-imagination pattern: music, jokes, grief, repair 
 Generated project assets:
 
 - `docs/design-concept.png`
-- `assets/img/hero-workbench.png`
+- `assets/img/hero-*.webp`
 
 These are concept images, not event evidence, endorsement evidence, real production photos or proof of any partnership.
 
