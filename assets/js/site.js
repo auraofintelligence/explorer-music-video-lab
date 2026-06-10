@@ -24,6 +24,8 @@ const siteTrail = [
   { id: 'sources', label: 'Sources', href: 'sources.html' },
 ];
 
+const builderPages = siteTrail.filter((page) => page.id.startsWith('builder-'));
+
 const pageHeroImages = {
   workflow: 'assets/img/hero-workflow.webp',
   questions: 'assets/img/hero-questions.webp',
@@ -112,6 +114,36 @@ function renderPageHero() {
   hero.append(copy, media);
 }
 
+function renderBuilderIndex() {
+  if (!pageId.startsWith('builder-')) return;
+  const hero = document.querySelector('.page-hero');
+  const main = document.querySelector('main');
+  if (!hero || !main || document.querySelector('[data-builder-index]')) return;
+
+  const links = [
+    { id: 'builders', label: 'All builders', href: 'builders/index.html' },
+    ...builderPages,
+  ].map((builder) => {
+    const current = builder.id === pageId;
+    return `<a href="${resolveHref(builder.href)}"${current ? ' aria-current="page"' : ''}>${builder.label}</a>`;
+  }).join('');
+
+  const index = document.createElement('section');
+  index.className = 'section builder-index-nav';
+  index.setAttribute('data-builder-index', '');
+  index.setAttribute('aria-labelledby', 'builder-index-title');
+  index.innerHTML = `
+    <div class="builder-index-nav-inner">
+      <div>
+        <span>Builder index</span>
+        <h2 id="builder-index-title">Jump to any builder.</h2>
+      </div>
+      <nav class="builder-index-links" aria-label="Builder pages">${links}</nav>
+    </div>
+  `;
+  hero.insertAdjacentElement('afterend', index);
+}
+
 function renderFooter() {
   const footer = document.querySelector('[data-site-footer]');
   if (!footer) return;
@@ -159,6 +191,7 @@ function setupToTop() {
 
 renderHeader();
 renderPageHero();
+renderBuilderIndex();
 renderFooter();
 renderPageNav();
 setupToTop();

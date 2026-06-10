@@ -28,6 +28,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   color: var(--ink);
   background:
     linear-gradient(180deg, rgba(15, 111, 115, .06), transparent 28rem),
@@ -461,20 +462,29 @@ p {
     white;
 }
 
-.bridge-band {
-  width: min(calc(100% - clamp(2rem, 8vw, 4rem)), var(--max));
-  max-width: var(--max);
-  margin-inline: auto;
+.section.bridge-band {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  max-width: none;
+  margin-left: -50vw;
+  margin-right: -50vw;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
+  gap: clamp(1.2rem, 4vw, 4rem);
   align-items: center;
-  padding: clamp(2rem, 5vw, 4rem);
-  border-radius: var(--radius);
+  padding-block: clamp(3rem, 7vw, 5.8rem);
+  padding-inline: max(clamp(1.1rem, 4vw, 2rem), calc((100vw - var(--max)) / 2 + clamp(1rem, 4vw, 2rem)));
+  border-radius: 0;
   color: white;
   background:
     linear-gradient(135deg, rgba(16, 33, 41, .94), rgba(15, 111, 115, .92)),
     var(--ink);
+}
+
+.bridge-band > div {
+  max-width: 58rem;
 }
 
 .bridge-band h2,
@@ -763,6 +773,65 @@ p {
   font-weight: 950;
 }
 
+.builder-index-nav {
+  padding-top: 1.4rem;
+  padding-bottom: 1rem;
+}
+
+.builder-index-nav-inner {
+  display: grid;
+  grid-template-columns: minmax(12rem, .32fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(217, 239, 232, .78), rgba(255, 255, 255, .92)),
+    white;
+  box-shadow: var(--soft-shadow);
+}
+
+.builder-index-nav-inner span {
+  color: var(--coral-dark);
+  font-size: .82rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.builder-index-nav h2 {
+  margin-top: .2rem;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.builder-index-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  justify-content: flex-end;
+}
+
+.builder-index-links a {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .72rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  color: var(--teal-dark);
+  text-decoration: none;
+  font-size: .94rem;
+  font-weight: 900;
+}
+
+.builder-index-links a[aria-current="page"] {
+  border-color: transparent;
+  background: var(--ink);
+  color: white;
+}
+
 .builder-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(21rem, .8fr);
@@ -1028,12 +1097,13 @@ textarea {
   .source-grid,
   .source-grid-four,
   .builder-directory,
+  .builder-index-nav-inner,
   .builder-layout,
   .split-section,
   .source-lede,
   .source-posture,
   .page-hero,
-  .bridge-band,
+  .section.bridge-band,
   .footer-main {
     grid-template-columns: 1fr;
   }
@@ -1060,8 +1130,9 @@ textarea {
     grid-column: 2;
   }
 
-  .bridge-band {
+  .section.bridge-band {
     padding-inline: clamp(1rem, 4vw, 2rem);
+    justify-items: start;
   }
 }
 
@@ -1104,6 +1175,14 @@ textarea {
   .footer-page-nav a:last-child {
     text-align: left;
     justify-items: start;
+  }
+
+  .builder-index-links {
+    justify-content: stretch;
+  }
+
+  .builder-index-links a {
+    flex: 1 1 100%;
   }
 
   .workflow-cards {
