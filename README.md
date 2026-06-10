@@ -1,4 +1,4 @@
-# Explorer Music Video Lab
+# Explorers Music Video Lab
 
 A static, GitHub Pages-ready site and Markdown builder toolkit for turning songs into music-video clips.
 

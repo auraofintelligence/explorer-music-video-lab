@@ -73,9 +73,9 @@ function renderHeader() {
   }).join('');
 
   header.innerHTML = `
-    <a class="brand" href="${prefix}index.html" aria-label="Explorer Music Video Lab home">
+    <a class="brand" href="${prefix}index.html" aria-label="Explorers Music Video Lab home">
       <span class="brand-mark">${trebleIcon()}</span>
-      <span>Explorer Music Video Lab</span>
+      <span>Explorers Music Video Lab</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" data-nav-toggle>Menu</button>
     <nav class="site-nav" data-nav aria-label="Main navigation">${navLinks}</nav>
@@ -129,7 +129,7 @@ function renderFooter() {
     ${prevNext}
     <div class="footer-main">
       <div>
-        <strong>Explorer Music Video Lab</strong>
+        <strong>Explorers Music Video Lab</strong>
         <p>Song-first music-video builders for optimistic, self-sovereign creators.</p>
       </div>
       <nav class="footer-links" aria-label="Footer links">

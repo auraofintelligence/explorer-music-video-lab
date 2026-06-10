@@ -17,7 +17,7 @@ The voice should feel like a calm creative workbench:
 
 ## Core Promise
 
-Explorer Music Video Lab helps a creator turn a song into a music-video clip without handing away the meaning.
+Explorers Music Video Lab helps a creator turn a song into a music-video clip without handing away the meaning.
 
 The central idea is:
 

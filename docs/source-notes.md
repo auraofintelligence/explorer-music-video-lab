@@ -1,6 +1,6 @@
 # Source Notes
 
-These notes summarise the source trail used to create Explorer Music Video Lab.
+These notes summarise the source trail used to create Explorers Music Video Lab.
 
 ## Source Posture
 
