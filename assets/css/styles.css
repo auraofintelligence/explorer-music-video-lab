@@ -484,41 +484,67 @@ p {
 }
 
 .page-hero {
-  display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(18rem, .75fr);
-  gap: clamp(1rem, 4vw, 2rem);
-  align-items: center;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
   max-width: none;
-  padding: clamp(2.25rem, 5vw, 4.6rem) 0 clamp(2rem, 5vw, 4rem);
+  min-height: clamp(34rem, 76vh, 50rem);
+  margin-left: -50vw;
+  margin-right: -50vw;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  background: var(--paper-2);
 }
 
 .page-hero-copy {
-  max-width: 48rem;
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--max));
+  max-width: none;
+  margin-inline: auto;
+  padding: clamp(5rem, 8vw, 8rem) clamp(1rem, 4vw, 2rem);
 }
 
 .page-hero-media {
-  min-width: 0;
-  aspect-ratio: 16 / 10;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border: 0;
+  border-radius: 0;
   background: var(--ink);
-  box-shadow: var(--shadow);
+  box-shadow: none;
+}
+
+.page-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, .98) 0%, rgba(255, 253, 248, .88) 33%, rgba(255, 253, 248, .28) 62%, rgba(255, 253, 248, .04) 100%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0) 70%, var(--paper) 100%);
 }
 
 .page-hero-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center right;
 }
 
 .small-hero h1 {
-  max-width: 14ch;
-  font-size: clamp(2.45rem, 5.5vw, 4.6rem);
+  max-width: 9.5ch;
+  font-size: clamp(3rem, 8vw, 6.2rem);
+  line-height: .94;
 }
 
 .small-hero p {
+  max-width: 37rem;
+  margin-top: 1.1rem;
   font-size: clamp(1.05rem, 2vw, 1.35rem);
   color: var(--muted);
 }
@@ -855,6 +881,10 @@ textarea {
     display: flex;
   }
 
+  .page-hero {
+    min-height: clamp(32rem, 72vh, 42rem);
+  }
+
   .hero {
     min-height: auto;
     align-items: end;
@@ -870,7 +900,17 @@ textarea {
     background: linear-gradient(180deg, rgba(255,253,248,0) 30%, var(--paper) 100%);
   }
 
+  .page-hero-media::after {
+    background:
+      linear-gradient(90deg, rgba(255, 253, 248, .98) 0%, rgba(255, 253, 248, .86) 46%, rgba(255, 253, 248, .35) 100%),
+      linear-gradient(180deg, rgba(255, 253, 248, .18) 0%, rgba(255, 253, 248, .04) 58%, var(--paper) 100%);
+  }
+
   .hero-copy {
+    padding-top: 4rem;
+  }
+
+  .page-hero-copy {
     padding-top: 4rem;
   }
 
@@ -888,8 +928,7 @@ textarea {
   }
 
   .page-hero-media {
-    order: -1;
-    aspect-ratio: 16 / 8.5;
+    order: initial;
   }
 
   .footer-page-nav {
