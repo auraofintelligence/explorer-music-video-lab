@@ -14,7 +14,7 @@ Each link below reflects an evidenced family, lineage or direct connection. This
 
 ### Aura Systems Image Atlas source projects
 
-- [aura-systems-image-atlas](https://github.com/auraofintelligence/aura-systems-image-atlas) - [public page](https://auraofintelligence.github.io/aura-systems-image-atlas/) - source project represented in this visual atlas, source project represented in visual atlas.
+- [aura-systems-image-atlas](https://github.com/auraofintelligence/aura-systems-image-atlas) - [public page](https://auraofintelligence.github.io/aura-systems-image-atlas/) - source project represented in this visual atlas.
 - [i-C-infinity-music-universe](https://github.com/auraofintelligence/i-C-infinity-music-universe) - [public page](https://auraofintelligence.github.io/i-C-infinity-music-universe/) - later build; i-C-infinity-music-universe is earlier, explicit cross-reference, ordered build lineage, shared named build family.
 - [quandamooka-country-events-engine](https://github.com/auraofintelligence/quandamooka-country-events-engine) - [public page](https://auraofintelligence.github.io/quandamooka-country-events-engine/) - shared community programme.
 - [quandamooka-film-festival](https://github.com/auraofintelligence/quandamooka-film-festival) - [public page](https://auraofintelligence.github.io/quandamooka-film-festival/) - explicit cross-reference, shared community programme.
