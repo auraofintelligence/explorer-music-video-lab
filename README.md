@@ -10,7 +10,7 @@
 
 ## Related public projects
 
-Each link below reflects an evidenced family, lineage or direct connection. This project has 17 relevant public connections.
+Each link below reflects an evidenced family, lineage or direct connection. This project has 14 relevant public connections.
 
 ### Aura Systems Image Atlas source projects
 
@@ -23,9 +23,6 @@ Each link below reflects an evidenced family, lineage or direct connection. This
 ### i C. infinity music and content system
 
 - [i-C-infinity](https://github.com/auraofintelligence/i-C-infinity) - later build; i-C-infinity is earlier, explicit cross-reference, ordered build lineage, shared named build family.
-- [i-C-infinity-one-album-pack](https://github.com/auraofintelligence/i-C-infinity-one-album-pack) - [public page](https://auraofintelligence.github.io/i-C-infinity-one-album-pack/) - later build; i-C-infinity-one-album-pack is earlier, ordered build lineage, shared named build family.
-- [i-C-infinity-three-album-pack](https://github.com/auraofintelligence/i-C-infinity-three-album-pack) - [public page](https://auraofintelligence.github.io/i-C-infinity-three-album-pack/) - later build; i-C-infinity-three-album-pack is earlier, ordered build lineage, shared named build family.
-- [i-C-infinity-two-album-pack](https://github.com/auraofintelligence/i-C-infinity-two-album-pack) - [public page](https://auraofintelligence.github.io/i-C-infinity-two-album-pack/) - later build; i-C-infinity-two-album-pack is earlier, ordered build lineage, shared named build family.
 - [infinity-content-engine](https://github.com/auraofintelligence/infinity-content-engine) - [public page](https://auraofintelligence.github.io/infinity-content-engine/) - later build; infinity-content-engine is earlier, explicit cross-reference, ordered build lineage, shared named build family.
 - [infinity-engine](https://github.com/auraofintelligence/infinity-engine) - [public page](https://auraofintelligence.github.io/infinity-engine/) - earlier build; infinity-engine is later, explicit cross-reference, ordered build lineage, shared named build family.
 
